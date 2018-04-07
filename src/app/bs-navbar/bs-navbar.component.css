@@ -1,3 +1,15 @@
-.dropdown-toggle {
+.dropdown-toggle, a {
   cursor: pointer;
+}
+
+.navbar-brand {
+  color: #469626 !important;
+}
+
+.navbar-brand:hover {
+  color: #255711 !important;
+}
+
+.navbar-brand i {
+  margin-right: 10px;
 }
