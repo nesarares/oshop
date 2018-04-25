@@ -5,9 +5,3 @@
 .card-footer {
   padding: 0;
 }
-
-.align-middle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
