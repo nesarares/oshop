@@ -7,6 +7,8 @@ import { RouterModule } from '@angular/router'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CustomFormsModule } from 'ng2-validation';
 import { DataTableModule } from 'angular5-data-table';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
@@ -32,6 +34,11 @@ import { ProductFilterComponent } from './products/product-filter/product-filter
 import { ProductCardComponent } from './product-card/product-card.component';
 import { ShoppingCartService } from './shopping-cart.service';
 import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
+import { OrderService } from './order.service';
+import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-cart-summary.component';
+import { ShippingFormComponent } from './shipping-form/shipping-form.component';
+import { OrdersHistoryComponent } from './orders-history/orders-history.component';
+import { OrderSummaryComponent } from './order-summary/order-summary.component';
 
 
 @NgModule({
@@ -51,6 +58,10 @@ import { ProductQuantityComponent } from './product-quantity/product-quantity.co
     ProductFilterComponent,
     ProductCardComponent,
     ProductQuantityComponent,
+    ShoppingCartSummaryComponent,
+    ShippingFormComponent,
+    OrdersHistoryComponent,
+    OrderSummaryComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,6 +71,8 @@ import { ProductQuantityComponent } from './product-quantity/product-quantity.co
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    MatExpansionModule,
+    BrowserAnimationsModule,
     NgbModule.forRoot(),
     RouterModule.forRoot([
       { path: '', component: ProductsComponent },
@@ -68,29 +81,29 @@ import { ProductQuantityComponent } from './product-quantity/product-quantity.co
       { path: 'login', component: LoginComponent },
 
       { path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard] },
-      { path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuard] },
+      { path: 'order-success/:id', component: OrderSuccessComponent, canActivate: [AuthGuard] },
       { path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard] },
-      
-      
-      { 
+
+
+      {
         path: 'admin/products/new',
-        component: ProductFormComponent, 
-        canActivate: [AuthGuard, AdminAuthGuard] 
+        component: ProductFormComponent,
+        canActivate: [AuthGuard, AdminAuthGuard]
       },
-      { 
+      {
         path: 'admin/products/:id',
-        component: ProductFormComponent, 
-        canActivate: [AuthGuard, AdminAuthGuard] 
+        component: ProductFormComponent,
+        canActivate: [AuthGuard, AdminAuthGuard]
       },
-      { 
+      {
         path: 'admin/products',
-        component: AdminProductsComponent, 
-        canActivate: [AuthGuard, AdminAuthGuard] 
+        component: AdminProductsComponent,
+        canActivate: [AuthGuard, AdminAuthGuard]
       },
-      { 
-        path: 'admin/orders', 
-        component: AdminOrdersComponent, 
-        canActivate: [AuthGuard, AdminAuthGuard] 
+      {
+        path: 'admin/orders',
+        component: AdminOrdersComponent,
+        canActivate: [AuthGuard, AdminAuthGuard]
       }
     ])
   ],
@@ -101,7 +114,8 @@ import { ProductQuantityComponent } from './product-quantity/product-quantity.co
     UserService,
     CategoryService,
     ProductService,
-    ShoppingCartService
+    ShoppingCartService,
+    OrderService
   ],
   bootstrap: [AppComponent]
 })

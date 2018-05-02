@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { OrderService } from '../order.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-order-success',
@@ -6,10 +8,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./order-success.component.css']
 })
 export class OrderSuccessComponent implements OnInit {
+  order;
+  orderId: string;
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private orderService: OrderService) {
+    this.orderId = this.route.snapshot.paramMap.get('id');
+  }
 
-  ngOnInit() {
+  async ngOnInit() {
+    if (this.orderId) this.orderService
+      .getOrderById(this.orderId)
+      .take(1)
+      .subscribe(order => this.order = order);
   }
 
 }

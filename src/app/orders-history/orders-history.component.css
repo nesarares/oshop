@@ -1,0 +1,20 @@
+.mat-expansion-panel {
+  box-shadow: none !important;
+  margin: 0 !important;
+}
+
+.mat-expansion-panel-header {
+  height: initial !important;
+}
+
+.mat-expansion-panel-header {
+  padding: 0 !important;
+}
+
+.accordion-content {
+  padding-top: 25px;
+}
+
+h5 {
+  margin: 20px 0;
+}
