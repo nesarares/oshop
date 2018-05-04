@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
-import { Product } from './models/product';
+import { Product } from 'shared/models/product';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/observable';
-import { ShoppingCart } from './models/shopping-cart';
+import { ShoppingCart } from 'shared/models/shopping-cart';
 
 @Injectable()
 export class ShoppingCartService {
