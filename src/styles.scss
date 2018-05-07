@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~font-awesome/css/font-awesome.css";
+
+$theme-colors: (
+  "primary": #255711,
+  "danger": #ce180e
+);
+
+@import '~bootstrap/scss/bootstrap';
+
+body {
+  padding-top: 80px;
+}
+
+.navbar-light, .navbar-brand {
+  color: map-get($theme-colors, primary) !important;
+}
+
+.navbar-light, .navbar-brand:hover {
+  color: darken(map-get($theme-colors, primary), 10%) !important;
+}
